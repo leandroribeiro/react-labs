@@ -1,0 +1,12 @@
+body {
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    font-family: Hack;
+    font-weight: 300;
+    font-size: 1.4rem;
+}
+
+h1, h2 {
+    font-weight: 200;
+}

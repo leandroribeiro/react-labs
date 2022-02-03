@@ -1,0 +1,15 @@
+body{
+    background-color: #222;
+    color: beige;
+    font-family: 'Lucida Sans';
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+h1, h2, h3{
+    font-weight: 200;
+}
+
+h2, h3{
+    margin: 0;
+}

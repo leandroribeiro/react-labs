@@ -14,6 +14,8 @@ import Card from './components/layout/Card';
 import DiretaPai from './components/comunicacao/DiretaPai';
 import IndiretaPai from './components/comunicacao/IndiretaPai';
 import MyInput from './components/formulario/Input';
+import Contador from './components/contador/Contador';
+
 
 // Approach 1
 // export default function(props) {
@@ -47,6 +49,10 @@ export default function App(props) {
             <h1>Fundamentos React - Course</h1>
 
             <div className='Cards'>
+
+                <Card titulo="#14 - Contador">
+                    <Contador numeroInicial={50} passo={5}></Contador>
+                </Card>
 
                 <Card titulo="#13 - Componente Controlado" cor="pink">
                     <MyInput></MyInput>

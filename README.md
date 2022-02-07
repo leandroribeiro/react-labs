@@ -8,8 +8,8 @@
 
 ### [#1 - React JS Curso Rápido (Youtube) {2} horas](https://www.youtube.com/watch?v=XQxitgyZ_S4)
 
-- [Masterclass #1 2020 - Parte 1](https://www.youtube.com/watch?v=XQxitgyZ_S4)
-- [Masterclass #2 2020 - Parte 2](https://www.youtube.com/watch?v=GJ8Vm-h0V8I)
+- [React JS Curso Rápido #1 2020 - Parte 1](https://www.youtube.com/watch?v=XQxitgyZ_S4)
+- [React JS Curso Rápido #2 2020 - Parte 2](https://www.youtube.com/watch?v=GJ8Vm-h0V8I)
 
 [![Image](https://img.youtube.com/vi/XQxitgyZ_S4/mqdefault.jpg)](https://www.youtube.com/watch?v=XQxitgyZ_S4)
 

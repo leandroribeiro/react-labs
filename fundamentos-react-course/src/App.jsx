@@ -15,6 +15,7 @@ import DiretaPai from './components/comunicacao/DiretaPai';
 import IndiretaPai from './components/comunicacao/IndiretaPai';
 import MyInput from './components/formulario/Input';
 import Contador from './components/contador/Contador';
+import Mega from './components/mega/Mega';
 
 
 // Approach 1
@@ -50,7 +51,11 @@ export default function App(props) {
 
             <div className='Cards'>
 
-                <Card titulo="#14 - Contador">
+                <Card titulo="#15 - Desafio 3 - Mega" cor="green">
+                    <Mega quantidade={6}></Mega>
+                </Card>
+
+                <Card titulo="#14 - Contador" cor="blue">
                     <Contador numeroInicial={50} passo={5}></Contador>
                 </Card>
 

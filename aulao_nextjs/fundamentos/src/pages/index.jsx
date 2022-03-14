@@ -1,8 +1,10 @@
+import Link from "next/link"
+
 export default function Index() {
     return (
         <div>
-            <h1>Fundamento de NextJS & React</h1>
-            <h2>Vamos estudar esse framework</h2>
+            <Link href="/estiloso">Estiloso</Link>
+            <Link href="/exemplo">Exemplo</Link>
         </div>
     )
 }

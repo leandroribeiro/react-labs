@@ -16,6 +16,8 @@ export default function Index() {
             <Navegador destino="/navegacao" titulo="Navegação #01" />
             <Navegador destino="/cliente/RJ/123" titulo="Navegação #02" />
             <Navegador destino="/estado" titulo="Componente com Estado" />
+            <Navegador destino="/integracao" titulo="Integração #01" />
+            <Navegador destino="/estatico" titulo="Conteúdo Estático" />
         </div>
     )
 }

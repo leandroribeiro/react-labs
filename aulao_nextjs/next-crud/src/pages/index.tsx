@@ -1,37 +1,72 @@
 import Layout from "../components/Layout";
 import Tabela from "../components/Tabela";
-import Cliente from "../core/cliente";
 import Botao from "../components/Botao";
 import Formulario from "../components/Formulario";
+import {Fragment, useEffect, useState} from "react";
+import ClienteRepository from "../core/ClienteRepository";
+import ColecaoCliente from "../backend/db/ColecaoCliente";
+import Cliente from "../core/Cliente";
 
 export default function Home() {
 
-    const clientes = [
-        new Cliente('Pedro', 30, '1'),
-        new Cliente('Thiago', 32, '2'),
-        new Cliente('João', 35, '3')
-    ];
+    const repo: ClienteRepository = new ColecaoCliente();
 
-    function clienteSelecionado(model: Cliente) {
-        console.log(`editar ${model.id} click!`);
+    const [visivel, setVisivel] = useState<'tabela' | 'formulario'>('tabela');
+    const [cliente, setCliente] = useState(Cliente.vazio)
+    const [clientes, setClientes] = useState<Cliente[]>([]);
+
+
+    useEffect(obterTodos, []);
+
+    function obterTodos() {
+        repo.obter().then(clientes => {
+            setClientes(clientes);
+            setVisivel('tabela');
+        });
     }
 
-    function clienteExcluido(model: Cliente) {
-        console.log(`excluir ${model.id} click!`);
+    function clienteSelecionado(model: Cliente) {
+        setCliente(model);
+        setVisivel('formulario');
+    }
+
+    async function clienteExcluido(model: Cliente) {
+        await repo.excluir(model);
+        obterTodos();
+    }
+
+    function quandoCancelar() {
+        setVisivel('tabela');
+    }
+
+    async function quandoSalvar(cliente: Cliente) {
+        await repo.salvar(cliente);
+        obterTodos();
+    }
+
+    function novoCliente() {
+        setCliente(Cliente.vazio);
+        setVisivel('formulario');
     }
 
     return (
         <div
             className="flex justify-center items-center h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white">
             <Layout titulo="Cadastro Simples">
-                <div className="flex justify-end">
-                    <Botao cor="green" className="mb-4">Novo Cliente</Botao>
-                </div>
-                <Tabela clientes={clientes}
-                        clienteExcluido={clienteExcluido}
-                        clienteSelecionado={clienteSelecionado}/>
+                {visivel === 'tabela' ? (
+                    <Fragment>
+                        <div className="flex justify-end">
+                            <Botao cor="green" className="mb-4"
+                                   onClick={() => novoCliente()}>Novo Cliente</Botao>
+                        </div>
+                        <Tabela clientes={clientes}
+                                clienteExcluido={clienteExcluido}
+                                clienteSelecionado={clienteSelecionado}/>
+                    </Fragment>
+                ) : (
+                    <Formulario cliente={cliente} quandoCancelar={quandoCancelar} quandoSalvar={quandoSalvar}/>
+                )}
             </Layout>
-            <Formulario/>
         </div>
     )
 }

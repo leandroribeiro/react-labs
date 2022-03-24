@@ -4,7 +4,7 @@ interface EntradaProps {
     tipo?: 'text' | 'number',
     texto: string,
     className?: string
-    quandoAlterar?: (valor: any) => void
+    onChange?: (valor: any) => void
 }
 
 export default function Entrada(props: EntradaProps) {
@@ -18,7 +18,7 @@ export default function Entrada(props: EntradaProps) {
                 // id=""
                 value={props.valor}
                 readOnly={props.somenteLeitura}
-                onChange={(e) => props.quandoAlterar?.(e.target.value)}
+                onChange={(e) => props.onChange?.(e.target.value)}
             />
         </div>
     )

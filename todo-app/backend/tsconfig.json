@@ -1,11 +1,14 @@
 {
-    "compilerOptions": {        
+    "compilerOptions": {
+        // "target": "es2016",
+        // "module": "commonjs",
         "sourceMap": true,
         "outDir": "./dist",
         "baseUrl": "./src",
         "strict": true,
         "lib": ["esnext"],
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "**/*.spec.ts"]

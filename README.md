@@ -17,7 +17,7 @@
 
 ### [🚧 #2 - Curso React + Redux: Fundamentos (Udemy) {55} horas](https://www.udemy.com/course/react-redux-pt/)
 
-![36%](https://progress-bar.dev/36)
+![37%](https://progress-bar.dev/37)
 
 - [Curso React + Redux: Fundamentos](https://www.udemy.com/course/react-redux-pt/)
 

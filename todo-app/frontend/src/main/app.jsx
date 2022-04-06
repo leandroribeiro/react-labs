@@ -1,6 +1,7 @@
 import React from "react";
-import About from "../about/about";
-import Todo from "../todo/todo";
+import Menu from "../template/menu";
+import { BrowserRouter as Router } from 'react-router-dom';
+import Content from "./routes";
 
 // TODO
 // import 'modules/bootstrap/dist/css/bootstrap.min.css'
@@ -8,10 +9,11 @@ import Todo from "../todo/todo";
 
 export default function App(props) {
     return (
-        <div className="App">
-            <h1>Olá Mundo do React Denovo!!</h1>
-            <Todo />
-            <About />
+        <div className="container App">
+            <Router>
+                <Menu />
+                <Content></Content>
+            </Router>
         </div>
     )
 }

@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/loader.js",
+  "main": "src/server.ts",
   "scripts": {
     "dev:linux": "nodemon --watch 'src/' --exec './node_modules/.bin/ts-node src/server.ts' -e ts",
     "dev:win": "nodemon --watch \"src/\" --exec \"./node_modules/.bin/ts-node src/server.ts\" -e ts",

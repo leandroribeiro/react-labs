@@ -7,11 +7,15 @@
     "dev:linux": "nodemon --watch 'src/' --exec './node_modules/.bin/ts-node src/server.ts' -e ts",
     "dev:win": "nodemon --watch \"src/\" --exec \"./node_modules/.bin/ts-node src/server.ts\" -e ts",
     "build": "rimraf dist && ./node_modules/.bin/tsc",
-    "prod": "./node_modules/.bin/pm2 start dist/server.js --name todo-app --watch",
-    "prod:ts": "./node_modules/.bin/pm2 start src/server.ts --name todo-app --watch",
+    "prod:start": "./node_modules/.bin/pm2 start dist/server.js --name todo-app --watch",
+    "prod:stop": "./node_modules/.bin/pm2 stop dist/server.js --name todo-app",
+    "prod:restart": "./node_modules/.bin/pm2 restart dist/server.js --name todo-app",
     "prod:status": "./node_modules/.bin/pm2 status",
     "prod:monitor": "./node_modules/.bin/pm2 monit",
     "prod:build": "./node_modules/.bin/tsc -w & /node_modules/.bin/pm2 start dist/server.js --watch",
+    "prod:ts:start": "./node_modules/.bin/pm2 start src/server.ts --name todo-app --watch",
+    "prod:ts:stop": "./node_modules/.bin/pm2 stop src/server.ts --name todo-app",
+    "prod:ts:restart": "./node_modules/.bin/pm2 restart src/server.ts --name todo-app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,12 +24,12 @@
   "dependencies": {
     "@prisma/client": "^3.11.1",
     "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
-    "mongoose": "^6.2.8",
-    "node-restful": "^0.2.6",
     "pm2": "^5.2.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.23",
     "nodemon": "^2.0.15",

@@ -58,10 +58,10 @@ routes.get(`/todo/:id`, async (req, res) => {
         where: { id: Number(id) },
     })
     res.json(todoItem)
+
 })
 
 routes.get(`/todo`, async (req, res) => {
-
     const todoItens = await prisma.todo.findMany({})
     res.json(todoItens)
 })

@@ -18,9 +18,16 @@ export default class Todo extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
+        this.handleDone = this.handleDone.bind(this);
+        this.handleTodo = this.handleTodo.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
+    }
 
+    componentDidMount() {
         this.refresh();
     }
+
 
     setDescription(value) {
         this.setState({ ...this.state, description: value })
@@ -53,26 +60,63 @@ export default class Todo extends Component {
             }),
             headers: { 'Content-Type': 'application/json' }
         })
-            .then(response => response.json())
-            // .then(json => console.log(json))
             .finally(() => {
                 this.refresh();
             });
     }
 
-    refresh() {
-        try {
-            fetch(URL, { method: "GET" })
-                .then((response) => response.json())
-                .then((tasks) => {
-                    this.setDescription('');
-                    this.setItems(tasks);
-                })
-            // .then((data) => console.log(data));            
-        } catch (error) {
-            console.error(error);
-        }
+    handleRemove(todo) {
+        fetch(`${URL}/${todo.id}`, { method: "DELETE" })
+            .catch(error => console.error(error))
+            .finally(_ => {
+                this.refresh(this.getDescription());
+            });
+    }
 
+    handleDone(todo) {
+        fetch(`${URL}/${todo.id}`, {
+            method: "PUT",
+            body: JSON.stringify({
+                ...todo,
+                done: true
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .catch(error => console.error(error))
+            .finally(_ => {
+                this.refresh(this.getDescription());
+            });
+    }
+
+    handleTodo(todo) {
+        fetch(`${URL}/${todo.id}`, {
+            method: "PUT",
+            body: JSON.stringify({
+                ...todo,
+                done: false
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .catch(error => console.error(error))
+            .finally(_ => {
+                this.refresh(this.getDescription());
+            });
+    }
+
+    handleSearch(){
+        this.refresh(this.getDescription());
+    }
+
+    refresh(textSearch = '') {
+        let search = textSearch ? `&regex=${textSearch}` : '';
+
+        fetch(`${URL}?sort=-createdAt${search}`, { method: "GET" })
+            .then((response) => response.json())
+            .then((tasks) => {
+                this.setDescription(textSearch);
+                this.setItems(tasks);
+            })
+            .catch(error => console.error(error))
     }
 
     render() {
@@ -83,9 +127,13 @@ export default class Todo extends Component {
                     <TodoForm
                         handleAdd={this.handleAdd}
                         description={this.getDescription()}
-                        handleChange={this.handleChange}></TodoForm>
+                        handleChange={this.handleChange}
+                        handleSearch={this.handleSearch}></TodoForm>
                     <TodoList
-                        items={this.getItems()}></TodoList>
+                        items={this.getItems()}
+                        handleRemove={this.handleRemove}
+                        handleDone={this.handleDone}
+                        handleTodo={this.handleTodo}></TodoList>
                 </Grid>
             </div>
         )

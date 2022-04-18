@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from '@prisma/client'
+import { Prisma, PrismaClient, Todo } from '@prisma/client'
 import express from "express"
 
 const prisma = new PrismaClient()
@@ -27,9 +27,7 @@ routes.put('/todo/:id', async (req, res) => {
         const todoItem = await prisma.todo.update({
             where: { id: Number(id) },
             data: {
-                // TODO
-                // done: body.done
-                done: true
+                done: body.done
             },
         })
 
@@ -62,7 +60,36 @@ routes.get(`/todo/:id`, async (req, res) => {
 })
 
 routes.get(`/todo`, async (req, res) => {
-    const todoItens = await prisma.todo.findMany({})
+    let todoItens: Todo[] = [];
+
+    if (req.query && req.query.regex) {
+        let search = req.query.regex.toString();
+
+        todoItens = await prisma.todo.findMany({
+            orderBy: [
+                {
+                    createdAt: 'desc',
+                },
+            ],
+            where: {
+                description: {
+                    contains: search,
+                    mode: 'insensitive',
+                }
+            }
+
+        })
+    }
+    else {
+        todoItens = await prisma.todo.findMany({
+            orderBy: [
+                {
+                    createdAt: 'desc',
+                },
+            ]
+        })
+    }
+
     res.json(todoItens)
 })
 

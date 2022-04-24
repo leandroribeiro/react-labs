@@ -22,6 +22,7 @@ export default class Todo extends Component {
         this.handleDone = this.handleDone.bind(this);
         this.handleTodo = this.handleTodo.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleClear = this.handleClear.bind(this);
     }
 
     componentDidMount() {
@@ -103,8 +104,12 @@ export default class Todo extends Component {
             });
     }
 
-    handleSearch(){
+    handleSearch() {
         this.refresh(this.getDescription());
+    }
+
+    handleClear() {
+        this.refresh();
     }
 
     refresh(textSearch = '') {
@@ -128,7 +133,8 @@ export default class Todo extends Component {
                         handleAdd={this.handleAdd}
                         description={this.getDescription()}
                         handleChange={this.handleChange}
-                        handleSearch={this.handleSearch}></TodoForm>
+                        handleSearch={this.handleSearch}
+                        handleClear={this.handleClear}></TodoForm>
                     <TodoList
                         items={this.getItems()}
                         handleRemove={this.handleRemove}

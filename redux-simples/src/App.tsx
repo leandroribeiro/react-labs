@@ -1,17 +1,21 @@
-import Card from './components/Card'
 import './App.css'
+import Intervalo from "./components/Intervalo";
+import Soma from "./components/Soma";
+import Media from "./components/Media";
+import Sorteio from "./components/Sorteio";
 
 export const App = () => {
+
     return (
         <div className="App">
             <h1>Exercício Redux (Simples)</h1>
             <div className="linha">
-                <Card title='Titulo 1.1' green>texto 1.1</Card>
-                <Card title='Titulo 1.2' green>texto 1.2</Card>
+                <Intervalo></Intervalo>
             </div>
             <div className="linha">
-                <Card title="Titulo 2.1" red>texto 2.1</Card>
-                <Card title="Titulo 2.2" red>texto 2.2</Card>
+                <Soma></Soma>
+                <Media></Media>
+                <Sorteio></Sorteio>
             </div>
         </div>
     )

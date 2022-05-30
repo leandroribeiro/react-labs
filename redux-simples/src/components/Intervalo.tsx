@@ -2,7 +2,7 @@ import './Intervalo.css'
 import React, {Dispatch} from "react";
 import Card from "./Card";
 import {connect} from "react-redux";
-import {atribuirNumeroMaximo, atribuirNumeroMinimo} from "../store/actions/numeros";
+import {atribuirNumeroMaximo, atribuirNumeroMinimo} from "../store/actions/numerosActions";
 
 
 interface IRootState {

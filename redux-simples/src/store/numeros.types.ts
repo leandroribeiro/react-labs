@@ -1,4 +1,9 @@
-export const NumeroActionTypes = {
-    NUM_MIN_SET: 'NUM_MIN_SET',
-    NUM_MAX_SET: 'NUM_MAX_SET',
-} as const;
+export interface INumeroState {
+    min: number,
+    max: number
+}
+
+export interface NumeroAction {
+    type: string,
+    payload: string
+}

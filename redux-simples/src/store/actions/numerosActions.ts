@@ -1,4 +1,4 @@
-import {NumeroActionTypes} from "../numeros.types";
+import {NumeroActionTypes} from "./numerosActionTypes";
 
 function atribuirNumeroMinimo(novoValor: number){
     return {
